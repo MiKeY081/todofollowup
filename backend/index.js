@@ -8,13 +8,14 @@ const app = express()
 app.use(cors())
 app.use(morgan("dev"))
 app.use(express.json())
-await mongoose.connect("mongodb+srv://twitter-clone:twitter123@cluster0.bco6omb.mongodb.net/?retryWrites=true&w=majority").catch(err=>err.message)
+await mongoose.connect(process.env.MONGODB_URL)
 
 app.post("/add",createTodo)
 app.get("/get",getTodo)
 app.delete("/delete/:id",deleteTodo)
 app.put("/check/:id",updateTodo)
 
-app.listen(5001, ()=>{
+const PORT = process.env.PORT
+app.listen(PORT, ()=>{
     console.log("Server is running")
 })
