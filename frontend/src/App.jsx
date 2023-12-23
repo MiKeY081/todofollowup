@@ -8,12 +8,12 @@ function App() {
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5001/get").then(res => setTodos(res.data.allTodo));
+    axios.get("/get").then(res => setTodos(res.data.allTodo));
   }, []);
 
   const deleteProduct = async (id) => {
     try {
-      await axios.delete(`http://localhost:5001/delete/${id}`);
+      await axios.delete(`/delete/${id}`);
       setTodos((prev) => prev.filter((todo) => todo._id !== id));
     } catch (error) {
       console.log(error.message);
@@ -22,7 +22,7 @@ function App() {
 
   const updateCheckbox = async (id, checkbox) => {
     try {
-      await axios.put(`http://localhost:5001/check/${id}`);
+      await axios.put(`/check/${id}`);
       location.reload();
     } catch (error) {
       console.log(error.message);

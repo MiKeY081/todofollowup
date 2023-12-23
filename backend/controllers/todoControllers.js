@@ -1,4 +1,4 @@
-import { TopologyClosedEvent } from "mongodb"
+
 import { TodoModel } from "../models/Todo.js"
 
 const createTodo = async (req, res)=>{

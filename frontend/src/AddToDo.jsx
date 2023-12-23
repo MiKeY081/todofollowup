@@ -11,7 +11,7 @@ const AddToDo = ({ setTodos }) => {
         return;
       }
 
-      const res = await axios.post('http://localhost:5001/add', { task });
+      const res = await axios.post('/add', { task });
       setTodos((prev) => [...prev, res.data.todo]);
     } catch (error) {
       console.log(error);
